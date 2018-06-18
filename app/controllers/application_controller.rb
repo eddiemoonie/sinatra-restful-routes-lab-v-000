@@ -24,4 +24,10 @@ class ApplicationController < Sinatra::Base
     @recipe = Recipe.create(:name => params[:name], :ingredients => params[:ingredients], :cook_time => params[:cook_time])
     redirect to "/recipes/#{@recipe.id}"
   end
+
+  delete '/recipes/:id/delete' do #delete action
+    @post = Post.find_by_id(params[:id])
+    @post.delete
+    redirect to '/posts'
+  end
 end
